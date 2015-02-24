@@ -40,8 +40,7 @@ void TextBuddy::executeCommand(string userCommand, string fileName){
 }
 TextBuddy::COMMAND_TYPE TextBuddy::findCommandType(string currentCommand){
 
-	std::cin >> currentCommand;
-	if (currentCommand == "add"){
+		if (currentCommand == "add"){
 			return ADD;
 		}
 		else if (currentCommand == "display"){
