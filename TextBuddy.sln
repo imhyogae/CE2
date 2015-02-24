@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextBuddy", "Project1\Project1.vcxproj", "{504E257D-65AD-455B-9982-767B5789C432}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextBuddyTest", "TextBuddyTest\TextBuddyTest.vcxproj", "{59294EC7-9A1C-40ED-A8B6-81A88833BD77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{504E257D-65AD-455B-9982-767B5789C432}.Debug|Win32.Build.0 = Debug|Win32
 		{504E257D-65AD-455B-9982-767B5789C432}.Release|Win32.ActiveCfg = Release|Win32
 		{504E257D-65AD-455B-9982-767B5789C432}.Release|Win32.Build.0 = Release|Win32
+		{59294EC7-9A1C-40ED-A8B6-81A88833BD77}.Debug|Win32.ActiveCfg = Debug|Win32
+		{59294EC7-9A1C-40ED-A8B6-81A88833BD77}.Debug|Win32.Build.0 = Debug|Win32
+		{59294EC7-9A1C-40ED-A8B6-81A88833BD77}.Release|Win32.ActiveCfg = Release|Win32
+		{59294EC7-9A1C-40ED-A8B6-81A88833BD77}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

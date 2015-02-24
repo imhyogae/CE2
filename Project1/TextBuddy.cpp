@@ -31,8 +31,10 @@ void TextBuddy::executeCommand(string userCommand, string fileName){
 			return clearText(fileName);
 	case SORT:
 			return sortText(fileName);
+	case SEARCH:
+			return searchText(fileName);
 	case INVALID:
-			std::cout << "invalid command" << std::endl;
+			cout << "invalid command" << endl;
 			return;
 	case EXIT:
 			return; 
@@ -55,6 +57,9 @@ TextBuddy::COMMAND_TYPE TextBuddy::findCommandType(string currentCommand){
 		else if (currentCommand == "sort"){
 			return SORT;
 		}
+		else if (currentCommand == "search"){
+			return SEARCH;
+		}
 		else if (currentCommand != "exit"){
 			return INVALID;
 		}
@@ -65,8 +70,8 @@ void TextBuddy::addText(string fileName){
 	string firstWord;
 	string remainingWords;
 	string wholePhrase;
-	std::cin >> firstWord;
-	std::getline(std::cin, remainingWords);
+	cin >> firstWord;
+	getline(cin, remainingWords);
 	wholePhrase = firstWord + remainingWords;
 	sprintf_s(buffer, MESSAGE_ADDED.c_str(), fileName.c_str(), wholePhrase.c_str());
 	displayMessage(buffer);
@@ -75,7 +80,7 @@ void TextBuddy::addText(string fileName){
 }
 
 void TextBuddy::clearText(string fileName){
-	std::ofstream outputFile;
+	ofstream outputFile;
 	outputFile.open(fileName);
 	outputFile.close();
 
@@ -83,18 +88,33 @@ void TextBuddy::clearText(string fileName){
 	displayMessage(buffer);
 
 }
+void TextBuddy::searchText(string fileName)
+{
+	ifstream ifsFile;
+	string word;
+	string currentLine;
+	cin >> word;
+
+	ifsFile.open(fileName);
+	while (getline(ifsFile, currentLine)){
+		if (string::npos != currentLine.find(word))
+			cout << currentLine << endl;
+	}
+	ifsFile.close();
+
+}
 
 void TextBuddy::deleteText(string fileName){
 	int index;
-	std::cin >> index;
-	std::vector<string> textInFile;
+	cin >> index;
+	vector<string> textInFile;
 	string currentLine;
 	string deletedLine;
-	std::ifstream ifsFile;
-	std::ofstream outputFile;
+	ifstream ifsFile;
+	ofstream outputFile;
 
 	ifsFile.open(fileName);
-	while (std::getline(ifsFile, currentLine)){
+	while (getline(ifsFile, currentLine)){
 		textInFile.push_back(currentLine);
 	}
 
@@ -106,7 +126,7 @@ void TextBuddy::deleteText(string fileName){
 			deletedLine = textInFile[i];
 		}
 		else {
-			outputFile << textInFile[i] << std::endl;
+			outputFile << textInFile[i] << endl;
 		}
 	}
 	outputFile.close();
@@ -117,13 +137,13 @@ void TextBuddy::deleteText(string fileName){
 }
 
 void TextBuddy::displayText(string fileName){
-	std::ifstream textFile;
+	ifstream textFile;
 	string currentLine;
 
 	textFile.open(fileName);
 	int i;
-	for (i = 1; std::getline(textFile, currentLine); i++){
-		std::cout << i << "." <<currentLine <<std::endl;
+	for (i = 1; getline(textFile, currentLine); i++){
+		cout << i << "." <<currentLine <<endl;
 	}
 
 	if (i == 1 ){
@@ -140,36 +160,36 @@ void TextBuddy::displayWelcome(string fileName){
 	displayMessage(buffer);
 	}
 void TextBuddy::displayMessage(string message) {
-	std::cout << message << std::endl;
+	cout << message << endl;
 		
 }
 
 void TextBuddy::writeFile(string message, string fileName){
-	std::ofstream destination;
+	ofstream destination;
 
-	destination.open(fileName, std::ofstream::app);
-	destination << message << std::endl;
+	destination.open(fileName, ofstream::app);
+	destination << message << endl;
 	destination.close();
 
 }
 
 void TextBuddy::sortText(string fileName){
-	std::ifstream textFile;
-	std::ofstream outputFile;
+	ifstream textFile;
+	ofstream outputFile;
 	string currentLine;
-	std::vector<string> tempVector;
+	vector<string> tempVector;
 
 	textFile.open(fileName);
 	
-	while(std::getline(textFile,currentLine)){
+	while(getline(textFile,currentLine)){
 		tempVector.push_back(currentLine);
 	}
-	std::sort(tempVector.begin(), tempVector.end());
+	sort(tempVector.begin(), tempVector.end());
 
 	outputFile.open(fileName);
 
 	for (unsigned int i = 0; i < tempVector.size(); i++){
-			outputFile << tempVector[i] << std::endl;
+			outputFile << tempVector[i] << endl;
 		}
 	outputFile.close();
 

@@ -20,7 +20,7 @@ private:
 	static const std::string MESSAGE_CLEARED;
 	static const std::string MESSAGE_EMPTY;
 	static const std::string MESSAGE_SORTED;
-	enum COMMAND_TYPE { ADD, DISPLAY, DELETE, CLEAR, SORT, INVALID, EXIT};
+	enum COMMAND_TYPE { ADD, DISPLAY, DELETE, CLEAR, SORT, INVALID, EXIT, SEARCH};
 
 	COMMAND_TYPE findCommandType(string currentCommand);
 	
@@ -31,7 +31,7 @@ private:
 	void deleteText(string fileName);
 	void clearText(string fileName);
 	void sortText(string fileName);
-
+	void searchText(string fileName);
 public:
 	TextBuddy();
 	~TextBuddy();
