@@ -1,9 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextBuddy", "TextBuddy\TextBuddy.vcxproj", "{416BE931-ED43-4E96-93B8-4F1C9E11EC5A}"
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextBuddy", "Project1\Project1.vcxproj", "{504E257D-65AD-455B-9982-767B5789C432}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +9,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{416BE931-ED43-4E96-93B8-4F1C9E11EC5A}.Debug|Win32.ActiveCfg = Debug|Win32
-		{416BE931-ED43-4E96-93B8-4F1C9E11EC5A}.Debug|Win32.Build.0 = Debug|Win32
-		{416BE931-ED43-4E96-93B8-4F1C9E11EC5A}.Release|Win32.ActiveCfg = Release|Win32
-		{416BE931-ED43-4E96-93B8-4F1C9E11EC5A}.Release|Win32.Build.0 = Release|Win32
+		{504E257D-65AD-455B-9982-767B5789C432}.Debug|Win32.ActiveCfg = Debug|Win32
+		{504E257D-65AD-455B-9982-767B5789C432}.Debug|Win32.Build.0 = Debug|Win32
+		{504E257D-65AD-455B-9982-767B5789C432}.Release|Win32.ActiveCfg = Release|Win32
+		{504E257D-65AD-455B-9982-767B5789C432}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
