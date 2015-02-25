@@ -36,7 +36,7 @@ public:
 	void deleteText(void);
 	void clearText(void);
 	void sortText(void);
-	void searchText(void);
+	vector<string> searchText(string word);
 	void displayWelcome(void);
 	void getText(void);
 	void executeCommand(string userCommand);

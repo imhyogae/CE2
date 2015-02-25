@@ -34,7 +34,11 @@ void TextBuddy::executeCommand(string userCommand){
 	case SORT:
 			return sortText();
 	case SEARCH:
-			return searchText();
+			{	string word;
+				cin >> word;
+				vector<string> linesFound = searchText(word);
+				return;
+			}
 	case INVALID:
 			cout << "invalid command" << endl;
 			return;
@@ -90,20 +94,19 @@ void TextBuddy::clearText(void){
 	displayMessage(buffer);
 
 }
-void TextBuddy::searchText(void)
+vector<string> TextBuddy::searchText(string word)
 {
 	ifstream ifsFile;
-	string word;
 	string currentLine;
-	cin >> word;
-
+	vector<string> textFound;
 	ifsFile.open(fileName);
 	while (getline(ifsFile, currentLine)){
 		if (string::npos != currentLine.find(word))
-			cout << currentLine << endl;
+			textFound.push_back(currentLine);
 	}
 	ifsFile.close();
 
+	return textFound;
 }
 
 void TextBuddy::deleteText(void){
