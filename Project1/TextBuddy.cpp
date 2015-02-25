@@ -11,28 +11,30 @@
 	const string TextBuddy::MESSAGE_EMPTY = "%s is empty";
 	const string TextBuddy::MESSAGE_SORTED = "%s has been sorted";
 
-
+TextBuddy::TextBuddy(string inputFileName){
+	fileName=inputFileName;
+}
 TextBuddy::TextBuddy(void) {
 }
 TextBuddy::~TextBuddy(void) {
 }
 
-void TextBuddy::executeCommand(string userCommand, string fileName){
+void TextBuddy::executeCommand(string userCommand){
 	COMMAND_TYPE command=findCommandType(userCommand);
 
 	switch (command) {
 	case ADD:
-			return addText(fileName);
+			return addText();
 	case DISPLAY:
-			return displayText(fileName);
+			return displayText();
 	case DELETE:
-			return deleteText(fileName);
+			return deleteText();
 	case CLEAR:
-			return clearText(fileName);
+			return clearText();
 	case SORT:
-			return sortText(fileName);
+			return sortText();
 	case SEARCH:
-			return searchText(fileName);
+			return searchText();
 	case INVALID:
 			cout << "invalid command" << endl;
 			return;
@@ -66,7 +68,7 @@ TextBuddy::COMMAND_TYPE TextBuddy::findCommandType(string currentCommand){
 		else return EXIT;
 }
 
-void TextBuddy::addText(string fileName){
+void TextBuddy::addText(void){
 	string firstWord;
 	string remainingWords;
 	string wholePhrase;
@@ -75,11 +77,11 @@ void TextBuddy::addText(string fileName){
 	wholePhrase = firstWord + remainingWords;
 	sprintf_s(buffer, MESSAGE_ADDED.c_str(), fileName.c_str(), wholePhrase.c_str());
 	displayMessage(buffer);
-	writeFile(wholePhrase, fileName);
+	writeFile(wholePhrase);
 
 }
 
-void TextBuddy::clearText(string fileName){
+void TextBuddy::clearText(void){
 	ofstream outputFile;
 	outputFile.open(fileName);
 	outputFile.close();
@@ -88,7 +90,7 @@ void TextBuddy::clearText(string fileName){
 	displayMessage(buffer);
 
 }
-void TextBuddy::searchText(string fileName)
+void TextBuddy::searchText(void)
 {
 	ifstream ifsFile;
 	string word;
@@ -104,7 +106,7 @@ void TextBuddy::searchText(string fileName)
 
 }
 
-void TextBuddy::deleteText(string fileName){
+void TextBuddy::deleteText(void){
 	int index;
 	cin >> index;
 	vector<string> textInFile;
@@ -136,7 +138,7 @@ void TextBuddy::deleteText(string fileName){
 
 }
 
-void TextBuddy::displayText(string fileName){
+void TextBuddy::displayText(void){
 	ifstream textFile;
 	string currentLine;
 
@@ -155,7 +157,7 @@ void TextBuddy::displayText(string fileName){
 
 }
 
-void TextBuddy::displayWelcome(string fileName){
+void TextBuddy::displayWelcome(void){
 	sprintf_s(buffer, MESSAGE_WELCOME.c_str(), fileName.c_str());
 	displayMessage(buffer);
 	}
@@ -164,7 +166,7 @@ void TextBuddy::displayMessage(string message) {
 		
 }
 
-void TextBuddy::writeFile(string message, string fileName){
+void TextBuddy::writeFile(string message){
 	ofstream destination;
 
 	destination.open(fileName, ofstream::app);
@@ -172,8 +174,19 @@ void TextBuddy::writeFile(string message, string fileName){
 	destination.close();
 
 }
+void TextBuddy::getText(void){
+	ifstream textFile;
+	string currentLine;
+	textFile.open(fileName);
+	int i=0;
+	while(getline(textFile,currentLine)){
+		textInFile[i] = currentLine;
+		i++;
+	}
+	textFile.close();
+}
 
-void TextBuddy::sortText(string fileName){
+void TextBuddy::sortText(void){
 	ifstream textFile;
 	ofstream outputFile;
 	string currentLine;

@@ -13,6 +13,7 @@ using namespace std;
 
 class TextBuddy {
 private:
+	string fileName;
 	char buffer[1000];
 	static const std::string MESSAGE_WELCOME;
 	static const std::string MESSAGE_ADDED;
@@ -23,20 +24,22 @@ private:
 	enum COMMAND_TYPE { ADD, DISPLAY, DELETE, CLEAR, SORT, INVALID, EXIT, SEARCH};
 
 	COMMAND_TYPE findCommandType(string currentCommand);
-	
-	void displayText(string fileName);
-	void displayMessage(string message);
-	void writeFile(string message, string fileName);
-	void addText(string fileName);
-	void deleteText(string fileName);
-	void clearText(string fileName);
-	void sortText(string fileName);
-	void searchText(string fileName);
-public:
+public:	
 	TextBuddy();
+	TextBuddy(string);
 	~TextBuddy();
-	void displayWelcome(string fileName);
-	void executeCommand(string userCommand, string fileName);
+	string textInFile[1000];
+	void displayText(void);
+	void displayMessage(string message);
+	void writeFile(string message);
+	void addText(void);
+	void deleteText(void);
+	void clearText(void);
+	void sortText(void);
+	void searchText(void);
+	void displayWelcome(void);
+	void getText(void);
+	void executeCommand(string userCommand);
 };
 
 #endif
