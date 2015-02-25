@@ -1,3 +1,5 @@
+//Since other functions has been tested, I only use TDD to write sort and search function.
+
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include <assert.h>
@@ -45,7 +47,7 @@ namespace TextBuddyTest
 			};
 			vector<string> searchResult;
 			searchResult = testing.searchText(wordtobeFound);
-			int i=0;
+			unsigned int i=0;
 			while(i < searchResult.size()){
 				Assert::AreEqual(expected[i],searchResult[i]);
 				i++; 

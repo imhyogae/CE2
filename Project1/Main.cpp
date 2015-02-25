@@ -1,3 +1,5 @@
+// To follow TDD approach, compiler will only generate static library for TextBuddy. 
+
 #include <iostream>
 #include "TextBuddy.h"
 

@@ -1,5 +1,5 @@
 //By Ren Xiaokai A0116455
-//The following solution allows user to define a file to store the text to be added
+//The following solution has been modified to make TDD simple. 
 //Each text is added immediately after a user action that make modification to the file
 
 #include "TextBuddy.h"
@@ -33,15 +33,16 @@ void TextBuddy::executeCommand(string userCommand){
 			return clearText();
 	case SORT:
 			return sortText();
-	case SEARCH:
-			{	string word;
+	case SEARCH: {
+				string word;
 				cin >> word;
 				vector<string> linesFound = searchText(word);
 				return;
 			}
-	case INVALID:
+	case INVALID: {
 			cout << "invalid command" << endl;
 			return;
+			}
 	case EXIT:
 			return; 
 	}
@@ -89,13 +90,11 @@ void TextBuddy::clearText(void){
 	ofstream outputFile;
 	outputFile.open(fileName);
 	outputFile.close();
-
 	sprintf_s(buffer, MESSAGE_CLEARED.c_str(), fileName.c_str());
 	displayMessage(buffer);
-
 }
-vector<string> TextBuddy::searchText(string word)
-{
+//New function added to search a word in a line and return the lines that contain the word
+vector<string> TextBuddy::searchText(string word){
 	ifstream ifsFile;
 	string currentLine;
 	vector<string> textFound;
@@ -117,12 +116,10 @@ void TextBuddy::deleteText(void){
 	string deletedLine;
 	ifstream ifsFile;
 	ofstream outputFile;
-
 	ifsFile.open(fileName);
 	while (getline(ifsFile, currentLine)){
 		textInFile.push_back(currentLine);
 	}
-
 	ifsFile.close();
 	outputFile.open(fileName);
 
@@ -130,53 +127,48 @@ void TextBuddy::deleteText(void){
 		if (i == index - 1){
 			deletedLine = textInFile[i];
 		}
-		else {
+		else{
 			outputFile << textInFile[i] << endl;
 		}
 	}
 	outputFile.close();
-
 	sprintf_s(buffer, MESSAGE_DELETED.c_str(), fileName.c_str(), deletedLine.c_str());
 	displayMessage(buffer);
-
 }
 
 void TextBuddy::displayText(void){
 	ifstream textFile;
 	string currentLine;
-
 	textFile.open(fileName);
 	int i;
 	for (i = 1; getline(textFile, currentLine); i++){
 		cout << i << "." <<currentLine <<endl;
 	}
-
 	if (i == 1 ){
 		sprintf_s(buffer, MESSAGE_EMPTY.c_str(), fileName.c_str());
 		displayMessage(buffer);
 		return;
 	}
 	textFile.close();
-
 }
 
 void TextBuddy::displayWelcome(void){
 	sprintf_s(buffer, MESSAGE_WELCOME.c_str(), fileName.c_str());
 	displayMessage(buffer);
-	}
+}
+
 void TextBuddy::displayMessage(string message) {
-	cout << message << endl;
-		
+	cout << message << endl;	
 }
 
 void TextBuddy::writeFile(string message){
 	ofstream destination;
-
 	destination.open(fileName, ofstream::app);
 	destination << message << endl;
 	destination.close();
 
 }
+//This function will store all texts in a file to an internal vectors
 void TextBuddy::getText(void){
 	ifstream textFile;
 	string currentLine;
@@ -188,7 +180,7 @@ void TextBuddy::getText(void){
 	}
 	textFile.close();
 }
-
+//This function will sort the text in the file in alphabatical order
 void TextBuddy::sortText(void){
 	ifstream textFile;
 	ofstream outputFile;
@@ -211,7 +203,7 @@ void TextBuddy::sortText(void){
 
 	sprintf_s(buffer, MESSAGE_SORTED.c_str(), fileName.c_str());
 	displayMessage(buffer);
-	}
+}
 
 	
 
